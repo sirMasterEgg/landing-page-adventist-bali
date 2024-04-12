@@ -12,7 +12,7 @@ export default withMT({
         "form-input": "#3D3D3B",
       },
       backgroundImage: {
-        rect: "url('/assets/BG-RECTANGLE-2.svg'),url('/assets/BG-RECTANGLE-1.svg')",
+        rect: "url('/BG-RECTANGLE-2.svg'),url('/BG-RECTANGLE-1.svg')",
       },
     },
   },
