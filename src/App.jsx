@@ -3,8 +3,6 @@ import prayIcon from "./assets/pray-icon.svg";
 import loveIcon from "./assets/love-icon.svg";
 import giveIcon from "./assets/give-icon.svg";
 import CarouselCard from "./components/CarouselCard.jsx";*/
-import rect2 from "./assets/BG-RECTANGLE-2.svg";
-import rect1 from "./assets/BG-RECTANGLE-1.svg";
 import aboutPurposeIcon from "./assets/about-purpose.svg";
 import aboutInvolvedIcon from "./assets/about-involved.svg";
 import aboutHistoryIcon from "./assets/about-history.svg";
@@ -25,7 +23,7 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [blobDecoration, setBlobDecoration] = useState({
-    backgroundImage: `url(${rect2}), url(${rect1})`,
+    showImage: true,
     backgroundPosition: "right top, left 0 bottom -600px",
     backgroundSize: "85%, 85%",
     backgroundRepeat: "no-repeat, no-repeat",
@@ -33,7 +31,7 @@ function App() {
   const handleWindowResize = () => {
     if (window.innerWidth >= 960) {
       setBlobDecoration({
-        backgroundImage: `url(${rect2}), url(${rect1})`,
+        showImage: true,
         backgroundPosition: "right top, left 0 bottom -600px",
         backgroundSize: "85%, 85%",
         backgroundRepeat: "no-repeat, no-repeat",
@@ -112,7 +110,16 @@ function App() {
       </Carousel>
 
       <section className="bg-primary">
-        <div className="w-full h-full" style={blobDecoration}>
+        <div
+          className={`w-full h-full ${
+            blobDecoration.showImage ? "bg-rect" : ""
+          }`}
+          style={{
+            backgroundPosition: blobDecoration.backgroundPosition,
+            backgroundSize: blobDecoration.backgroundSize,
+            backgroundRepeat: blobDecoration.backgroundRepeat,
+          }}
+        >
           <Element name="homeElement" className="w-full px-5 lg:px-0">
             <div className="flex flex-col-reverse items-center pt-[85px] lg:flex-row lg:justify-between lg:p-[85px]">
               <div className="text-white flex flex-col items-center lg:w-[501px] lg:h-[374px] gap-[29px]">

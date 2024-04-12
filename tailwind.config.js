@@ -11,6 +11,9 @@ export default withMT({
         ternary: "#151515",
         "form-input": "#3D3D3B",
       },
+      backgroundImage: {
+        rect: "url('/assets/BG-RECTANGLE-2.svg'),url('/assets/BG-RECTANGLE-1.svg')",
+      },
     },
   },
   plugins: [],
