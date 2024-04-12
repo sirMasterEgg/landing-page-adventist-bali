@@ -28,6 +28,7 @@ function App() {
     backgroundSize: "85%, 85%",
     backgroundRepeat: "no-repeat, no-repeat",
   });
+
   const handleWindowResize = () => {
     if (window.innerWidth >= 960) {
       setBlobDecoration({
@@ -42,12 +43,48 @@ function App() {
   };
 
   useEffect(() => {
+    const handleScroll = () => {
+      // const elements = document.querySelectorAll(".custom-scroll");
+      //
+      // elements.forEach((element) => {
+      //   const { top } = element.getBoundingClientRect();
+      //
+      //   if (top < 300) {
+      //     element.classList.add("custom-scroll--show");
+      //   } else {
+      //     element.classList.remove("custom-scroll--show");
+      //   }
+      // });
+      const windowHeight = window.innerHeight;
+      const windowTopPosition =
+        window.scrollY || document.documentElement.scrollTop;
+      const windowBottomPosition = windowTopPosition + windowHeight;
+      const items = document.querySelectorAll(".custom-scroll");
+
+      items.forEach((item) => {
+        const itemTopPosition =
+          item.getBoundingClientRect().top + windowTopPosition;
+        const itemBottomPosition = itemTopPosition + item.offsetHeight;
+
+        if (
+          itemBottomPosition >= windowTopPosition &&
+          itemTopPosition <= windowBottomPosition
+        ) {
+          item.classList.add("custom-scroll--show");
+        } else {
+          item.classList.remove("custom-scroll--show");
+        }
+      });
+    };
+
     window.addEventListener("resize", handleWindowResize);
     window.addEventListener("load", handleWindowResize);
+    document.addEventListener("scroll", handleScroll);
 
     return () => {
       window.removeEventListener("resize", handleWindowResize);
       window.removeEventListener("load", handleWindowResize);
+      document.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -140,7 +177,10 @@ function App() {
             </div>
           </Element>
           <hr className="w-11/12 mx-auto my-16" />
-          <Element name="aboutElement" className="w-full px-5 lg:px-0">
+          <Element
+            name="aboutElement"
+            className="w-full px-5 lg:px-0 custom-scroll"
+          >
             <h1 className="text-white text-center font-black text-4xl">
               ABOUT
             </h1>
@@ -169,7 +209,10 @@ function App() {
             </div>
           </Element>
           <hr className="w-11/12 mx-auto my-16" />
-          <Element name="schedulesElement" className="w-full px-5 lg:px-0">
+          <Element
+            name="schedulesElement"
+            className="w-full px-5 lg:px-0 custom-scroll"
+          >
             <h1 className="text-white text-center font-black text-4xl">
               SCHEDULES
             </h1>
@@ -197,7 +240,7 @@ function App() {
         </div>
 
         <Element name="socialMediaElement" className="w-full">
-          <div className="bg-secondary pt-16">
+          <div className="bg-secondary pt-16 custom-scroll">
             <h1 className="text-white text-center font-black text-4xl">
               Follow us on Instagram
             </h1>
@@ -223,7 +266,7 @@ function App() {
               </button>
             </div>
           </div>
-          <div className="bg-primary pt-16">
+          <div className="bg-primary pt-16  custom-scroll">
             <h1 className="text-white text-center font-black text-4xl">
               Subscribe to our Youtube Channel
             </h1>
