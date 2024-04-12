@@ -1,22 +1,51 @@
 import React from "react";
-import { Collapse, IconButton } from "@material-tailwind/react";
+import { Collapse, IconButton, Navbar } from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import logo from "../assets/logo.svg";
+import { scroller } from "react-scroll";
 
 function NavList() {
+  const navigateTo = (element) => {
+    scroller.scrollTo(element, {
+      duration: 1000,
+      delay: 50,
+      smooth: true,
+    });
+  };
+
   return (
-    <ul className="flex flex-col bg-white gap-2 lg:gap-[43px] lg:bg-inherit lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
-      <a href="#">
-        <li className="text-black lg:text-white">Home</li>
+    <ul className="flex flex-col gap-2 my-2 lg:gap-[43px] lg:bg-inherit lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
+      <a
+        href="#"
+        onClick={() => {
+          navigateTo("homeElement");
+        }}
+      >
+        <li className="p-2 text-white">Home</li>
       </a>
-      <a href="#">
-        <li className="text-black lg:text-white">About</li>
+      <a
+        href="#"
+        onClick={() => {
+          navigateTo("aboutElement");
+        }}
+      >
+        <li className="p-2 text-white">About</li>
       </a>
-      <a href="#">
-        <li className="text-black lg:text-white">Schedules</li>
+      <a
+        href="#"
+        onClick={() => {
+          navigateTo("schedulesElement");
+        }}
+      >
+        <li className="p-2 text-white">Schedules</li>
       </a>
-      <a href="#">
-        <li className="text-black lg:text-white">Social Media</li>
+      <a
+        href="#"
+        onClick={() => {
+          navigateTo("socialMediaElement");
+        }}
+      >
+        <li className="p-2 text-white">Social Media</li>
       </a>
     </ul>
   );
@@ -37,7 +66,10 @@ export default function NavbarSimple() {
   }, []);
 
   return (
-    <nav className="max-w-full h-[59px] px-[15px] py-[8px] lg:px-[55px] lg:py-[35px] lg:h-[137px] w-screen absolute">
+    <Navbar
+      className="mx-auto max-w-full absolute rounded-none bg-transparent border-none z-20"
+      color={openNav ? "white" : "transparent"}
+    >
       <div className="flex items-center justify-between text-blue-gray-900">
         <img src={logo} alt="Adventist logo" />
         <div className="hidden lg:block">
@@ -50,15 +82,15 @@ export default function NavbarSimple() {
           onClick={() => setOpenNav(!openNav)}
         >
           {openNav ? (
-            <XMarkIcon className="h-6 w-6" strokeWidth={2} />
+            <XMarkIcon className="h-6 w-6 text-white" strokeWidth={2} />
           ) : (
-            <Bars3Icon className="h-6 w-6" strokeWidth={2} />
+            <Bars3Icon className="h-6 w-6 text-white" strokeWidth={2} />
           )}
         </IconButton>
       </div>
       <Collapse open={openNav}>
         <NavList />
       </Collapse>
-    </nav>
+    </Navbar>
   );
 }
