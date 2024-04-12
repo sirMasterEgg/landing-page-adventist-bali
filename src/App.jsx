@@ -3,8 +3,8 @@ import prayIcon from "./assets/pray-icon.svg";
 import loveIcon from "./assets/love-icon.svg";
 import giveIcon from "./assets/give-icon.svg";
 import CarouselCard from "./components/CarouselCard.jsx";*/
-import rect2 from "./assets/BG RECTANGLE 2.svg";
-import rect1 from "./assets/BG RECTANGLE 1.svg";
+import rect2 from "./assets/BG-RECTANGLE-2.svg";
+import rect1 from "./assets/BG-RECTANGLE-1.svg";
 import aboutPurposeIcon from "./assets/about-purpose.svg";
 import aboutInvolvedIcon from "./assets/about-involved.svg";
 import aboutHistoryIcon from "./assets/about-history.svg";
