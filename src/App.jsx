@@ -20,9 +20,10 @@ import markerIcon from "./assets/marker.svg";
 import logo from "./assets/logo.svg";
 import instagramExample from "./assets/instagram-example.png";
 import youtubeExample from "./assets/youtube-example.png";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import MapsEmbed from "./components/MapsEmbed.jsx";
 import CuratorWidget from "./components/CuratorWidget.jsx";
+import emailjs from "@emailjs/browser";
 
 function App() {
   const [blobDecoration, setBlobDecoration] = useState({
@@ -31,7 +32,7 @@ function App() {
     backgroundSize: "85%, 85%",
     backgroundRepeat: "no-repeat, no-repeat",
   });
-
+  const form = useRef();
   const handleWindowResize = () => {
     if (window.innerWidth >= 960) {
       setBlobDecoration({
@@ -44,10 +45,34 @@ function App() {
       setBlobDecoration({});
     }
   };
+  const sendEmail = (e) => {
+    e.preventDefault();
+    console.log(form.current);
+    emailjs
+      .sendForm("service_siep81q", "template_hbo9ozf", form.current, {
+        publicKey: "xX8iaMxq5gAcAraOw",
+      })
+      .then(
+        () => {
+          form.current.reset();
+        },
+        () => {
+          console.error("Failed to send email");
+        }
+      );
+  };
 
   useEffect(() => {
     const handleScroll = () => {
       const elements = document.querySelectorAll(".custom-scroll");
+      // const top = document.getElementById("wrapper");
+      // console.log(top);
+      // // if ( === 300) {
+      // //   console.log("on top");
+      // //   elements.forEach((element) => {
+      // //     element.classList.remove("custom-scroll--show");
+      // //   });
+      // // }
 
       elements.forEach((element) => {
         const { top } = element.getBoundingClientRect();
@@ -338,17 +363,22 @@ function App() {
                 @hangtuah.sdac
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-items-center items-center lg:grid-cols-5 gap-3 px-10 pt-16 pb-[85px] lg:py-[85px] lg:px-[200px]">
-                {Array.from({ length: 15 }).map((_, index) => (
-                  <img
-                    key={index}
-                    src={instagramExample}
-                    className="w-full"
-                    alt="Contoh Instagram"
+                {/*{Array.from({ length: 15 }).map((_, index) => (*/}
+                {/*  <img*/}
+                {/*    key={index}*/}
+                {/*    src={instagramExample}*/}
+                {/*    className="w-full"*/}
+                {/*    alt="Contoh Instagram"*/}
+                {/*  />*/}
+                {/*))}*/}
+                {/*<button className="col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-5 border border-white w-full p-5 text-white font-bold hover:bg-white hover:text-black transition duration-500">*/}
+                {/*  SEE MORE*/}
+                {/*</button>*/}
+                <div className="col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-5 w-full h-auto">
+                  <CuratorWidget
+                    feedId={"edc6ee7a-cbe2-4f46-892e-4b9bfa47fabe"}
                   />
-                ))}
-                <button className="col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-5 border border-white w-full p-5 text-white font-bold hover:bg-white hover:text-black transition duration-500">
-                  SEE MORE
-                </button>
+                </div>
               </div>
             </div>
             <div className="bg-primary pt-16 custom-scroll">
@@ -431,17 +461,19 @@ function App() {
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   Aliquid, consequatur?
                 </h3>
-                <form action="">
+                <form ref={form} onSubmit={sendEmail}>
                   <label htmlFor="name">Name</label>
                   <input
                     id="name"
                     type="text"
+                    name="user_name"
                     className="w-full p-2 my-2 rounded-lg bg-form-input focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                   />
                   <label htmlFor="email">Email</label>
                   <input
                     id="email"
                     type="email"
+                    name="user_email"
                     className="w-full p-2 my-2 rounded-lg bg-form-input focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                   />
                   <label htmlFor="message">Message</label>
@@ -452,8 +484,19 @@ function App() {
                     style={{
                       resize: "none",
                     }}
+                    name="message"
                     className="w-full p-2 my-2 rounded-lg bg-form-input focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                   ></textarea>
+                  <input
+                    type="hidden"
+                    name="to_name"
+                    value="Adventist Bali Website"
+                  />
+                  <input
+                    type="hidden"
+                    name="owner_name"
+                    value="Adventist Bali "
+                  />
                   <button
                     type="submit"
                     className="border-2 border-solid border-red-600 w-[146px] h-[46px] px-[48px] gap-[10px] rounded-lg text-red-600 font-bold"
