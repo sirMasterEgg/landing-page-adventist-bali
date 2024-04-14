@@ -3,12 +3,16 @@
 @tailwind utilities;
 
 .custom-scroll {
-    transform: translateY(-30px);
-    opacity: 0;
-    transition: 1s;
+    /*transform: translateY(-30px);*/
+    /*opacity: 0;*/
+    /*transition: 1s;*/
 }
 
 .custom-scroll--show {
     transform: translateY(0px);
     opacity: 1;
+}
+
+html {
+    scroll-behavior: smooth !important;
 }
