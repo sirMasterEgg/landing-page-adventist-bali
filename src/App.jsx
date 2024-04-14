@@ -185,7 +185,11 @@ function App() {
                   </p>
                   <p className="text-right font-bold text-xl">Roman 8:38-39</p>
                 </div>
-                <img src={pray} alt="Pray" className="lg:w-4/12 xl:w-5/12" />
+                <img
+                  src={pray}
+                  alt="Pray"
+                  className="lg:w-4/12 xl:w-5/12 rounded"
+                />
               </div>
             </Element>
             <hr className="w-11/12 mx-auto my-16" />
