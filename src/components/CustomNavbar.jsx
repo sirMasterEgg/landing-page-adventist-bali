@@ -52,7 +52,7 @@ export default function NavbarSimple({ children }) {
   return (
     <div id="wrapper" className="absolute w-full h-full overflow-y-scroll">
       <Navbar
-        className="sticky top-2 mx-auto max-w-[91.666667%] shadow-lg shadow-black/30 bg-black rounded-[50px] border-none z-20"
+        className="sticky top-2 mx-auto max-w-91-percent-plus-50-px shadow-lg shadow-black/30 bg-black rounded-[50px] border-none z-20"
         color={openNav ? "transparent" : "transparent"}
       >
         <div className="flex items-center justify-between text-blue-gray-900">

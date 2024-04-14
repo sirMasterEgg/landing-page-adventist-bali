@@ -27,3 +27,7 @@ body {
     height: 100%;
     overflow: auto;
 }
+
+.max-w-91-percent-plus-50-px {
+    max-width: calc(91.666667% + 50px);
+}
