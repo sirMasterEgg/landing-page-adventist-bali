@@ -31,7 +31,6 @@ function App() {
     backgroundSize: "85%, 85%",
     backgroundRepeat: "no-repeat, no-repeat",
   });
-  const [toCarousel, setToCarousel] = useState(false);
 
   const handleWindowResize = () => {
     if (window.innerWidth >= 960) {
@@ -41,10 +40,8 @@ function App() {
         backgroundSize: "85%, 85%",
         backgroundRepeat: "no-repeat, no-repeat",
       });
-      setToCarousel(false);
     } else {
       setBlobDecoration({});
-      setToCarousel(true);
     }
   };
 
