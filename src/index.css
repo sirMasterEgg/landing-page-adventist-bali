@@ -15,4 +15,15 @@
 
 html {
     scroll-behavior: smooth !important;
+    height: 100%;
+    overflow: auto;
+}
+
+body {
+    height: 100%;
+}
+
+#root {
+    height: 100%;
+    overflow: auto;
 }
