@@ -81,12 +81,14 @@ function App() {
 
     window.addEventListener("resize", handleWindowResize);
     window.addEventListener("load", handleWindowResize);
-    document.addEventListener("scroll", handleScroll);
+    document.getElementById("wrapper").addEventListener("scroll", handleScroll);
 
     return () => {
       window.removeEventListener("resize", handleWindowResize);
       window.removeEventListener("load", handleWindowResize);
-      document.removeEventListener("scroll", handleScroll);
+      document
+        .getElementById("wrapper")
+        .removeEventListener("scroll", handleScroll);
     };
   }, []);
 
