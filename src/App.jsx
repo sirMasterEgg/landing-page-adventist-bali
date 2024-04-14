@@ -7,7 +7,7 @@ import aboutPurposeIcon from "./assets/about-purpose.svg";
 import aboutInvolvedIcon from "./assets/about-involved.svg";
 import aboutHistoryIcon from "./assets/about-history.svg";
 import crossIcon from "./assets/cross-icon.svg";
-import pray from "./assets/pray.png";
+import pray from "./assets/pray.webp";
 import carouselImage from "./assets/carousel/slide-1.svg";
 import { Carousel } from "@material-tailwind/react";
 import NavbarSimple from "./components/CustomNavbar";
@@ -172,7 +172,7 @@ function App() {
               <div className="flex flex-col-reverse items-center pt-[85px] lg:flex-row lg:justify-between lg:p-[85px]">
                 <div className="text-white flex flex-col items-center lg:w-[501px] lg:h-[374px] gap-[29px]">
                   <img src={crossIcon} className="w-auto" alt="Gambar Salib" />
-                  <h1 className="font-extrabold text-2xl lg:font-black lg:text-4xl">
+                  <h1 className="font-extrabold text-center text-2xl lg:font-black lg:text-4xl">
                     PRAYER OF THE DAY
                   </h1>
                   <p className="text-center lg:text-justify lg:text-lg">
@@ -185,7 +185,7 @@ function App() {
                   </p>
                   <p className="text-right font-bold text-xl">Roman 8:38-39</p>
                 </div>
-                <img src={pray} alt="Pray" className="w-60" />
+                <img src={pray} alt="Pray" className="lg:w-4/12 xl:w-5/12" />
               </div>
             </Element>
             <hr className="w-11/12 mx-auto my-16" />
