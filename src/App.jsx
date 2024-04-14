@@ -77,7 +77,7 @@ function App() {
       elements.forEach((element) => {
         const { top } = element.getBoundingClientRect();
 
-        if (top < 300) {
+        if (top < 500) {
           element.classList.add("custom-scroll--show");
         }
       });
@@ -188,7 +188,7 @@ function App() {
                 <img
                   src={pray}
                   alt="Pray"
-                  className="lg:w-4/12 xl:w-5/12 rounded"
+                  className="lg:w-4/12 xl:w-5/12 rounded-lg"
                 />
               </div>
             </Element>
